@@ -4,13 +4,13 @@ import { enableScreens } from "react-native-screens";
 
 enableScreens(); // ⬅️ WAJIB
 
-import LoginScreen from "../screens/LoginScreen";
-import SemesterScreen from "../screens/SemesterScreen";
-import BabScreen from "../screens/BabScreen";
-import MateriScreen from "../screens/MateriScreen";
-import SoalBabScreen from "../screens/SoalBabScreen";
-import UASScreen from "../screens/UASScreen";
-import HasilScreen from "../screens/HasilScreen";
+import LoginScreen from "../screen/LoginScreen";
+import SemesterScreen from "../screen/SemesterScreen";
+import BabScreen from "../screen/BabScreen";
+import MateriScreen from "../screen/MateriScreen";
+import SoalBabScreen from "../screen/SoalBabScreen";
+import UASScreen from "../screen/UASScreen";
+import HasilScreen from "../screen/HasilScreen";
 
 const Stack = createNativeStackNavigator();
 
