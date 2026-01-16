@@ -1,9 +1,5 @@
-import { View, Text } from "react-native";
+import AppNavigator from "./src/navigation/AppNavigator";
 
 export default function App() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>APLIKASI INFORMATIKA KELAS 5</Text>
-    </View>
-  );
+  return <AppNavigator />;
 }
