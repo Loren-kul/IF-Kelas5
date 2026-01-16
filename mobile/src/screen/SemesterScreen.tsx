@@ -1,22 +1,22 @@
 import { View, Text, Button } from "react-native";
-import api from "../services/api";
 import { useEffect, useState } from "react";
+import api from "../services/api";
 
 export default function SemesterScreen({ navigation }: any) {
-  const [data, setData] = useState([]);
+  const [semester, setSemester] = useState([]);
 
   useEffect(() => {
-    api.get("/semester").then(res => setData(res.data));
+    api.get("/semester").then(res => setSemester(res.data));
   }, []);
 
   return (
     <View>
-      <Text>Daftar Semester</Text>
-      {data.map((s: any) => (
+      <Text>Semester</Text>
+      {semester.map((s: any) => (
         <Button
           key={s.id}
           title={s.nama}
-          onPress={() => navigation.navigate("Bab", { id: s.id })}
+          onPress={() => navigation.navigate("Bab", { semesterId: s.id })}
         />
       ))}
     </View>
