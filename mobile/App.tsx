@@ -1,14 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import AppNavigator from "./src/navigation/AppNavigator";
+import { Text, View } from "react-native";
 
 export default function App() {
   return (
-    <>
-      {/* StatusBar mengatur tampilan indikator baterai/jam di bagian atas HP */}
-      <StatusBar style="auto" />
-      
-      {/* AppNavigator adalah kontainer utama yang berisi semua halaman aplikasi */}
-      <AppNavigator />
-    </>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Expo OK</Text>
+    </View>
   );
 }
