@@ -1,5 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { enableScreens } from "react-native-screens";
+
+enableScreens(); // ⬅️ WAJIB
 
 import LoginScreen from "../screens/LoginScreen";
 import SemesterScreen from "../screens/SemesterScreen";
