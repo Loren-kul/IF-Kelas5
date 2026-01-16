@@ -1,19 +1,15 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // hapus data lama (aman saat development)
-  await prisma.hasil.deleteMany();
   await prisma.user.deleteMany();
 
-  // password default
   const passwordGuru = await bcrypt.hash("guru123", 10);
   const passwordSiswa = await bcrypt.hash("siswa123", 10);
 
-  // user guru
-  const guru = await prisma.user.create({
+  await prisma.user.create({
     data: {
       nama: "Guru Informatika",
       email: "guru@ifkelas5.com",
@@ -22,8 +18,7 @@ async function main() {
     },
   });
 
-  // user siswa
-  const siswa = await prisma.user.create({
+  await prisma.user.create({
     data: {
       nama: "Siswa Kelas 5",
       email: "siswa@ifkelas5.com",
@@ -32,15 +27,9 @@ async function main() {
     },
   });
 
-  console.log("✅ Seed data berhasil");
-  console.log({ guru, siswa });
+  console.log("✅ Seeder berhasil");
 }
 
 main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

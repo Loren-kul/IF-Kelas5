@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
-import { signJwt } from "@/lib/jwt";
+import bcrypt from "bcrypt";
+import prisma from "@/lib/prisma";
+import { signToken } from "@/lib/jwt";
 
 export async function POST(req: Request) {
   try {
@@ -20,22 +20,23 @@ export async function POST(req: Request) {
 
     if (!user) {
       return NextResponse.json(
-        { message: "User tidak ditemukan" },
+        { message: "Email atau password salah" },
         { status: 401 }
       );
     }
 
-    const isValid = await bcrypt.compare(password, user.password);
+    const validPassword = await bcrypt.compare(password, user.password);
 
-    if (!isValid) {
+    if (!validPassword) {
       return NextResponse.json(
-        { message: "Password salah" },
+        { message: "Email atau password salah" },
         { status: 401 }
       );
     }
 
-    const token = signJwt({
+    const token = signToken({
       id: user.id,
+      email: user.email,
       role: user.role,
     });
 
@@ -50,6 +51,7 @@ export async function POST(req: Request) {
       },
     });
   } catch (error) {
+    console.error("LOGIN ERROR:", error);
     return NextResponse.json(
       { message: "Terjadi kesalahan server" },
       { status: 500 }
