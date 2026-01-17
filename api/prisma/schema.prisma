@@ -3,8 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "mysql" // atau postgresql
 }
 
 enum Role {
@@ -24,13 +23,17 @@ model User {
 model Semester {
   id   Int    @id @default(autoincrement())
   nama String
+
+  bab  Bab[]   //  RELASI BALIK
 }
 
 model Bab {
   id         Int      @id @default(autoincrement())
   nama       String
   semesterId Int
+
   semester   Semester @relation(fields: [semesterId], references: [id])
+  materi     Materi[] //  RELASI BALIK
 }
 
 model Materi {
@@ -38,5 +41,6 @@ model Materi {
   judul String
   isi   String
   babId Int
-  bab   Bab    @relation(fields: [babId], references: [id])
+
+  bab   Bab @relation(fields: [babId], references: [id])
 }
