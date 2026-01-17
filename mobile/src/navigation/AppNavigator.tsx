@@ -5,7 +5,7 @@ import { enableScreens } from "react-native-screens";
 enableScreens(); // ⬅️ WAJIB
 
 // ===== SCREEN UMUM (LAMA) =====
-import LoginScreen from "../screen/LoginScreen";
+import LoginScreen from "../auth/LoginScreen";
 import SemesterScreen from "../screen/SemesterScreen";
 import BabScreen from "../screen/BabScreen";
 import MateriScreen from "../screen/MateriScreen";
