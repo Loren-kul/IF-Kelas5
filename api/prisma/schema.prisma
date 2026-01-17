@@ -1,3 +1,12 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysqlostgresql" // jenis database yang digunakan, misalnya "postgresql" atau "mysql"
+  url      = env("DATABASE_URL")
+}
+
 enum Role {
   GURU
   SISWA
@@ -10,4 +19,24 @@ model User {
   password  String
   role      Role     @default(SISWA)
   createdAt DateTime @default(now())
+}
+
+model Semester {
+  id   Int    @id @default(autoincrement())
+  nama String
+}
+
+model Bab {
+  id         Int      @id @default(autoincrement())
+  nama       String
+  semesterId Int
+  semester   Semester @relation(fields: [semesterId], references: [id])
+}
+
+model Materi {
+  id    Int    @id @default(autoincrement())
+  judul String
+  isi   String
+  babId Int
+  bab   Bab    @relation(fields: [babId], references: [id])
 }
