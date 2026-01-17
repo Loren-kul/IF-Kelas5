@@ -1,0 +1,92 @@
+Aplikasi Pembelajaran Interaktif Kelas 5 (Mobile & API)
+
+Project IF-Kelas5 adalah aplikasi pembelajaran berbasis Mobile (Expo React Native) dan Backend API (Next.js + Prisma) yang mendukung role Guru dan Siswa. Untuk Sekolah Dasar sejak Kurikulum Merdeka menjadi Mata Pelajaran Informatika yang dulu hanya TIK saja.
+
+🧩 Fitur Utama
+👩‍🏫 Guru
+    Login sebagai guru
+    Kelola Semester
+    Kelola Bab
+    Kelola Materi
+    Kelola soal
+
+👨‍🎓 Siswa
+    Login sebagai siswa
+    Pilih semester
+    Baca materi
+    Kerjakan latihan & UAS
+    Melihat hasil
+
+🏗️ Teknologi yang Digunakan
+    Mobile
+    Expo (React Native)
+    React Navigation
+    Axios
+    AsyncStorage
+    TypeScript
+
+Backend (API)
+Next.js (App Router)
+Prisma ORM
+PostgreSQL / MySQL
+JWT Authentication
+Role-based Access (Guru & Siswa)
+
+📁 Struktur Folder Project
+IF-Kelas5/
+├── api/                # Backend API
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   └── seed.ts
+│   ├── public
+│   ├── src/
+│   │   ├── app/
+│   │   │   └── api/
+│   │   │       ├── auth/
+│   │   │       │   └── login/
+│   │   │       ├── guru/
+│   │   │       │   ├── semester/
+│   │   │       │   ├── bab/
+│   │   │       │   └── materi/
+│   │   │       └── siswa/
+│   │   │           ├── semester/
+│   │   │           └── bab/
+│   │   ├── lib/
+│   │   │   ├── auth.ts
+│   │   │   ├── jwt.ts  
+│   │   │   └── prisma.ts
+│   │   └── types/
+│   │       └── user.ts
+│   │       
+│   │       
+│   ├── .env
+│   └── package.json
+│
+├── mobile/             # Aplikasi Mobile (Expo)
+│   ├── src/
+│   │   ├── auth/
+│   │   │   └── LoginScreen.tsx
+│   │   ├── screen/
+│   │   │   ├── materi/
+│   │   │   │   ├── Semester/
+│   │   │   │   └── uas/
+│   │   ├── navigation/
+│   │   │   └── AppNavigator.tsx
+│   │   ├── components/
+│   │   │   ├── Button.tsx
+│   │   │   └── Card.tsx
+│   │   ├── services/
+│   │   │     ├── api.ts
+│   │   │     └── auth.ts    
+│   │   ├── BabScreen.tsx
+│   │   ├── HasilScreen.tsx
+│   │   ├── MateriScreen.tsx
+│   │   ├── SemesterScreen.tsx
+│   │   ├── SoalBabScreen.tsx
+│   │   └── UASScreen.tsx
+│   │                
+│   ├── App.tsx
+│   ├── index.ts
+│   └── package.json
+│
+└── README.md
