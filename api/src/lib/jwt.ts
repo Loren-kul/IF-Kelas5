@@ -1,12 +1,11 @@
 import jwt from "jsonwebtoken";
 
-export interface JwtPayload {
-  id: number;
-  email: string;
+const SECRET = process.env.JWT_SECRET!;
+
+export function signToken(payload: object) {
+  return jwt.sign(payload, SECRET, { expiresIn: "1d" });
 }
 
-export function signJwt(payload: JwtPayload) {
-  return jwt.sign(payload, process.env.JWT_SECRET!, {
-    expiresIn: "1d",
-  });
+export function verifyToken(token: string) {
+  return jwt.verify(token, SECRET);
 }
