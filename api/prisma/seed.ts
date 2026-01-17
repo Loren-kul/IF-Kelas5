@@ -9,13 +9,13 @@ async function main() {
   await prisma.user.createMany({
     data: [
       {
-        name: "Guru IF",
+        nama: "Guru IF",
         email: "guru@gmail.com",
         password,
         role: "GURU",
       },
       {
-        name: "Siswa IF",
+        nama: "Siswa IF",
         email: "siswa@gmail.com",
         password,
         role: "SISWA",
@@ -24,8 +24,13 @@ async function main() {
   });
 
   await prisma.semester.createMany({
-    data: [{ nama: "Semester 1" }, { nama: "Semester 2" }],
+    data: [
+      { nama: "Semester 1" },
+      { nama: "Semester 2" },
+    ],
   });
 }
 
-main();
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysqlostgresql" // jenis database yang digunakan, misalnya "postgresql" atau "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -14,7 +14,7 @@ enum Role {
 
 model User {
   id        Int      @id @default(autoincrement())
-  name      String
+  nama      String
   email     String   @unique
   password  String
   role      Role     @default(SISWA)

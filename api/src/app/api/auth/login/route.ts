@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     token,
     user: {
       id: user.id,
-      name: user.name,
+      nama: user.nama,
       role: user.role,
     },
   });
