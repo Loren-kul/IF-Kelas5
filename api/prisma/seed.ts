@@ -9,18 +9,22 @@ async function main() {
   await prisma.user.createMany({
     data: [
       {
-        name: "Guru Informatika",
+        name: "Guru IF",
         email: "guru@gmail.com",
         password,
         role: "GURU",
       },
       {
-        name: "Siswa Kelas 5",
+        name: "Siswa IF",
         email: "siswa@gmail.com",
         password,
         role: "SISWA",
       },
     ],
+  });
+
+  await prisma.semester.createMany({
+    data: [{ nama: "Semester 1" }, { nama: "Semester 2" }],
   });
 }
 
