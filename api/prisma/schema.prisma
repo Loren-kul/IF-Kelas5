@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql" // atau postgresql
+  provider = "postgresql" // atau postgresql atau mysql 
 }
 
 enum Role {
