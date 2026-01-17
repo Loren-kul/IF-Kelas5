@@ -32,61 +32,60 @@ PostgreSQL / MySQL
 JWT Authentication
 Role-based Access (Guru & Siswa)
 
-📁 Struktur Folder Project
+## 📁 Struktur Folder Project
+
+```bash
 IF-Kelas5/
-├── api/                # Backend API
+├── api/                       # Backend API (Next.js + Prisma)
 │   ├── prisma/
 │   │   ├── schema.prisma
 │   │   └── seed.ts
-│   ├── public
 │   ├── src/
 │   │   ├── app/
 │   │   │   └── api/
 │   │   │       ├── auth/
 │   │   │       │   └── login/
+│   │   │       │       └── route.ts
 │   │   │       ├── guru/
 │   │   │       │   ├── semester/
+│   │   │       │   │   └── route.ts
 │   │   │       │   ├── bab/
+│   │   │       │   │   └── route.ts
 │   │   │       │   └── materi/
+│   │   │       │       └── route.ts
 │   │   │       └── siswa/
 │   │   │           ├── semester/
+│   │   │           │   └── route.ts
 │   │   │           └── bab/
-│   │   ├── lib/
-│   │   │   ├── auth.ts
-│   │   │   ├── jwt.ts  
-│   │   │   └── prisma.ts
-│   │   └── types/
-│   │       └── user.ts
-│   │       
-│   │       
+│   │   │               └── route.ts
+│   │   └── lib/
+│   │       ├── prisma.ts
+│   │       ├── jwt.ts
+│   │       └── auth.ts
 │   ├── .env
 │   └── package.json
 │
-├── mobile/             # Aplikasi Mobile (Expo)
+├── mobile/                    # Aplikasi Mobile (Expo)
 │   ├── src/
 │   │   ├── auth/
 │   │   │   └── LoginScreen.tsx
 │   │   ├── screen/
-│   │   │   ├── materi/
-│   │   │   │   ├── Semester/
-│   │   │   │   └── uas/
+│   │   │   ├── SemesterScreen.tsx
+│   │   │   ├── BabScreen.tsx
+│   │   │   ├── MateriScreen.tsx
+│   │   │   ├── SoalBabScreen.tsx
+│   │   │   ├── UASScreen.tsx
+│   │   │   └── HasilScreen.tsx
 │   │   ├── navigation/
 │   │   │   └── AppNavigator.tsx
 │   │   ├── components/
 │   │   │   ├── Button.tsx
 │   │   │   └── Card.tsx
-│   │   ├── services/
-│   │   │     ├── api.ts
-│   │   │     └── auth.ts    
-│   │   ├── BabScreen.tsx
-│   │   ├── HasilScreen.tsx
-│   │   ├── MateriScreen.tsx
-│   │   ├── SemesterScreen.tsx
-│   │   ├── SoalBabScreen.tsx
-│   │   └── UASScreen.tsx
-│   │                
+│   │   └── services/
+│   │       └── api.ts
 │   ├── App.tsx
 │   ├── index.ts
 │   └── package.json
 │
 └── README.md
+
