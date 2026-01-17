@@ -1,57 +1,42 @@
-import { View, Text, Button, ActivityIndicator, Alert } from "react-native";
-import { useEffect, useState } from "react";
-import api from "../services/api";
+import { View, Text, Button, Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function SemesterScreen({ navigation, route }: any) {
-  const { token } = route.params; // ← token dari login
+export default function SemesterScreen({ navigation }: any) {
 
-  const [semester, setSemester] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const loadSemester = async () => {
-    try {
-      const res = await api.get("/semester", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+  const logout = async () => {
+    Alert.alert(
+      "Logout",
+      "Apakah kamu yakin ingin logout?",
+      [
+        { text: "Batal", style: "cancel" },
+        {
+          text: "Logout",
+          style: "destructive",
+          onPress: async () => {
+            await AsyncStorage.clear();
+            navigation.replace("Login");
+          },
         },
-      });
-
-      console.log("SEMESTER:", res.data);
-      setSemester(res.data);
-    } catch (err: any) {
-      console.log("ERROR SEMESTER:", err.response?.data || err.message);
-      Alert.alert("Error", "Gagal mengambil data semester");
-    } finally {
-      setLoading(false);
-    }
+      ]
+    );
   };
-
-  useEffect(() => {
-    loadSemester();
-  }, []);
-
-  if (loading) {
-    return <ActivityIndicator size="large" />;
-  }
 
   return (
     <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 20, marginBottom: 10 }}>
+      <Text style={{ fontSize: 18, marginBottom: 20 }}>
         Pilih Semester
       </Text>
 
-      {semester.map((s) => (
-        <Button
-          key={s.id}
-          title={s.nama}
-          onPress={() =>
-            navigation.navigate("Bab", {
-              semesterId: s.id,
-              token,
-            })
-          }
-        />
-      ))}
+      {/* === tombol semester kamu (biarkan tetap) === */}
+      <Button
+        title="Semester 1"
+        onPress={() => navigation.navigate("Semester1")}
+      />
+
+      {/* === LOGOUT === */}
+      <View style={{ marginTop: 40 }}>
+        <Button title="Logout" color="red" onPress={logout} />
+      </View>
     </View>
   );
 }
