@@ -3,6 +3,10 @@ import bcrypt from "bcrypt";
 import prisma from "@/lib/prisma";
 import { signJwt } from "@/lib/jwt";
 
+export async function OPTIONS() {
+  return NextResponse.json({}, { status: 200 });
+}
+
 export async function POST(req: Request) {
   const { email, password } = await req.json();
 
